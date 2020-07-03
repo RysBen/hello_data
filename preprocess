@@ -1,8 +1,10 @@
-import numpy ad np
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import Imputer
 
+###################
 #missing value
+###################
 ##data
 df=pd.DataFrame(np.random.randn(5,4),columns=['a','b','c','d'])
 df.iloc[0,0]=np.nan; df.iloc[4,3]=np.nan
@@ -13,7 +15,8 @@ df.iloc[0,0]=np.nan; df.iloc[4,3]=np.nan
 im=Imputer(missing_values='NaN', strategy='mean',axis=0) #w4
 df2=im.fit_transform(df)
 
+###################
 #outlier
-
+###################
 #replicates
 
