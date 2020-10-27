@@ -1,1 +1,28 @@
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import BayesianRidge, ElasticNet                 #
+from sklearn.svm import SVR                                                #
+from xgboost import XGBRegressor                                           #
+from sklearn.ensemble.gradient_boosting import GradientBoostingRegressor   #
+from sklearn.preprocessing import StandardScaler
+from sklaern.metrics import explained_variance_score, mean_absolute_error, mean_squared_error, r2_score
+import matplotlib.pyplot as plt
 
+raw_data=np.loadtxt('reg.txt')
+X_raw, y=raw_data[:,:-1], raw_data[:,-1]
+model_ss=StandardScaler()
+X=model_ss.fit_transform(X_raw)
+
+num=int(X.shape[0]*0.7)
+X_train, X_test=X[:num,:],X[num:,:]
+Y_train, Y_test=Y[:num,:],Y[num:,:]
+
+n_folds=5
+model_names=['BayesianRidge','XGBR','ElasticNet','SVR','GBR']
+model_br=BayesianRidge()
+model_xgbr=XGBRegressor(random_state=0)
+model_etc=ElasticNet(random_state=0)
+model_svr=SVR(gamma='scale')
+model_gbr=GradientBoostingRegressor(random_state=0)
+model_list=[model_br,...] #
+pre_y_list=[model.fit(X_train,y_train).predict(X_test) for model in model_list]
