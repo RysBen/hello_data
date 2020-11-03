@@ -44,3 +44,5 @@ for i,pre_y in enumerate(pre_y_list):
     plt.tight_layout()
     
 # awk 'NR==1{$1="tf"} NR>1{$1="T"}1' file
+# awk '{ if($1>$3) $6=$1; else $6=1-$1; print $0; } ' test01 > test02 
+# awk 'NR==1{$1="tf"} NR>1{if($4=="55242465") $1="T"; else $1="F"}1' file
