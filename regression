@@ -12,6 +12,7 @@ df=pd.read_csv('p_n.final.csv',header=0,index_col=0)
 df2=df.drop('total',axis=1).transpose()
 df2.index=pd.to_datetime(df2.index)
 raw_data=df2
+#merge with cost data 
 #raw_data=np.loadtxt('reg.txt')
 X_raw, y=raw_data.iloc[:,:-1], raw_data.iloc[:,-1]
 model_ss=StandardScaler()
